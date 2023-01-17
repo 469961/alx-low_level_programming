@@ -1,15 +1,12 @@
-#ifndef DOG_H
-#define DOG_H
+#ifndef STRTYP
+#define STRTYP
 
 /**
- * struck dog - a dog's basic info
- * @name: First member
- * @age: Second member
- * @owner: Third member
- *
- * Description: Longer description
+ * struck dog - sructure of a dog.
+ * @name: name of dog.
+ * @age: age of dog.
+ * @owner: owner of dog.
  */
-
 struct dog
 {
 	char *name;
@@ -29,4 +26,4 @@ void free_dog(dog_t *d);
 char *_strcpy(char *dest, char *src);
 int _strlen(char *s);
 
-#endif
+#endif /*STRTYP*/
