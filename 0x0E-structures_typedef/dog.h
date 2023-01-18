@@ -2,9 +2,9 @@
 #define STRTYP
 
 /**
- * struck dog - sructure of a dog.
- * @name: name of dog.
- * @age: age of dog.
+ * struct dog - structure of a dog.
+ * @name: name of a dog.
+ * @age: age of a dog.
  * @owner: owner of dog.
  */
 struct dog
