@@ -10,7 +10,7 @@
  * @next: points to the next mode
  *
  * Description: singly linked list mode structure
- * 		for the project
+ * for the project
  */
 typedef struct list_s
 {
