@@ -1,73 +1,49 @@
 #include "search_algos.h"
 
 /**
-  * print_array - print array with limits in l and r
-  * @array: set of numbers
-  * @l: left limit
-  * @r: right limit
-  * Return: nothing
-  */
-void print_array(int *array, size_t l, size_t r)
+ * _advanced_binary - performs advanced binary search
+ * @array: the integer array
+ * @size: its size
+ * @value: value to search for
+ *
+ * Return: the index found or -1
+ */
+int *_advanced_binary(int *array, size_t size, int value)
 {
-	printf("Searching in array: ");
-	for (l = l; l < r; l++)
-		printf("%d, ", array[l]);
-	printf("%d\n", array[l]);
-}
+	size_t i = 0;
 
-/**
-  * bi_se - search the first ocurrency of a value in the array recursively
-  * @array: set of numbers
-  * @l: left limit
-  * @r: right limit
-  * @value: value to search
-  * Return: return the first index located otherwise -1
-  */
-size_t bi_se(int *array, size_t l, size_t r, int value)
-{
-	int mid = 0, index = -1;
+	if (!size || !array)
+		return (NULL);
+	for (printf("Searching in array: "); i < size; i++)
+		printf("%d%s", array[i], i + 1 == size ? "\n" : ", ");
 
-	if (l > r)
-		return (-1);
-
-	print_array(array, l, r);
-	mid = (l + r) / 2;
-	if (array[mid] < value)
+	i = (size - 1) / 2;
+	if (array[i] == value)
 	{
-		l = mid + 1;
-		index = bi_se(array, l, r, value);
+		if (i)
+			return (_advanced_binary(array, i + 1, value));
+		return (array + i);
 	}
-	else if (array[mid] > value)
-	{
-		r = mid - 1;
-		index = bi_se(array, l, r, value);
-	}
+	else if (array[i] > value)
+		return (_advanced_binary(array, i + 1, value));
 	else
-		if (mid - 1 >= 0 && array[mid - 1] == array[mid])
-			index = bi_se(array, l, mid, value);
-		else
-			index = mid;
-
-	return (index);
+		return (_advanced_binary(array + i + 1, size - i - 1, value));
 }
 
 /**
-  * advanced_binary - search the first ocurrency of a value in the array
-  * @array: set of numbers
-  * @size: size of the array
-  * @value: value to search
-  * Return: return the first index located otherwise -1
-  */
+ * advanced_binary - performs advanced binary search
+ * @array: the integer array
+ * @size: its size
+ * @value: value to search for
+ *
+ * Return: the index found or -1
+ */
 int advanced_binary(int *array, size_t size, int value)
 {
-	int index = -1;
+	int *a = _advanced_binary(array, size, value);
 
-	if (array == NULL || size == 0)
+	if (!a)
 		return (-1);
-
-	index = bi_se(array, 0, size - 1, value);
-
-	if (index >= 0)
-		return (index);
-	return (-1);
+	else
+		return (a - array);
 }
